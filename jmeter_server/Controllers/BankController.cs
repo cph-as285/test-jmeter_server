@@ -13,9 +13,20 @@ namespace jmeter_server.Controllers
     {
         [HttpGet]
         [Route("interest")]
-        public HttpResponseMessage Interest()
+        [SwaggerResponse(HttpStatusCode.OK, null, typeof(InterestVM))]
+        [SwaggerResponse(HttpStatusCode.BadRequest)]
+        public HttpResponseMessage Interest(double dollars)
         {
-            return Request.CreateResponse("Hallo");
+            if (dollars < 0)
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Please enter a positive ammount");
+
+            if (dollars <= 100)
+                return Request.CreateResponse(new InterestVM(dollars * 0.03));
+
+            if(dollars < 1000)
+                return Request.CreateResponse(new InterestVM(dollars * 0.05));
+
+            return Request.CreateResponse(new InterestVM(dollars * 0.07));
         }
 
         [HttpGet]

@@ -190,6 +190,7 @@
     </Compile>
     <Compile Include="Models\CustomerType.cs" />
     <Compile Include="Models\DiscountVM.cs" />
+    <Compile Include="Models\InterestVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
