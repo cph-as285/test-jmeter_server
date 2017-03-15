@@ -4,13 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Mvc;
 
 namespace jmeter_server.Controllers
 {
+    [RoutePrefix("api/bank")]
     public class BankController : ApiController
     {
-        [System.Web.Http.HttpPost]
+        [HttpGet]
+        [Route("interest")]
         public HttpResponseMessage Interest()
         {
             return Request.CreateResponse("Hallo");
