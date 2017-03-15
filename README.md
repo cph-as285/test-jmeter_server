@@ -1,1 +1,1 @@
-Server: http://jmeter-server.azurewebsites.net/
+API Doc: http://jmeter-server.azurewebsites.net/swagger/
