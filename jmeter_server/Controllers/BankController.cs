@@ -21,12 +21,12 @@ namespace jmeter_server.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Please enter a positive ammount");
 
             if (dollars <= 100)
-                return Request.CreateResponse(new InterestVM(dollars * 0.03));
+             return Request.CreateResponse(HttpStatusCode.OK, new InterestVM(dollars * 0.03), "application/json");
 
             if(dollars < 1000)
-                return Request.CreateResponse(new InterestVM(dollars * 0.05));
+                return Request.CreateResponse(HttpStatusCode.OK, new InterestVM(dollars * 0.05), "application/json");
 
-            return Request.CreateResponse(new InterestVM(dollars * 0.07));
+            return Request.CreateResponse(HttpStatusCode.OK, new InterestVM(dollars * 0.07), "application/json");
         }
 
         [HttpGet]
@@ -47,7 +47,7 @@ namespace jmeter_server.Controllers
 
 
             var discountVM = new DiscountVM {Discount = discount.Value};
-            return Request.CreateResponse(discountVM);
+            return Request.CreateResponse(HttpStatusCode.OK, discountVM, "application/json");
         }
 
         private List<CustomerType> GetCustomerType(string info)
